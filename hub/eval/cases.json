@@ -1,0 +1,144 @@
+[
+  {
+    "id": "kettle_basic",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 1480, "duration_s": 90,
+              "local_time": "07:12", "similar_events_today": 0},
+    "expected_appliance_any": ["kettle"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "toaster",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 950, "duration_s": 120,
+              "local_time": "08:00", "similar_events_today": 1},
+    "expected_appliance_any": ["toaster"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "microwave",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 1100, "duration_s": 45,
+              "local_time": "12:30", "similar_events_today": 0},
+    "expected_appliance_any": ["microwave"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "hair_dryer",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 1500, "duration_s": 180,
+              "local_time": "07:45", "similar_events_today": 0},
+    "expected_appliance_any": ["hair dryer", "hairdryer"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "space_heater_30min",
+    "input": {"device": "ww-01/ch1", "baseline_w": 85, "peak_w": 1200, "duration_s": 1800,
+              "local_time": "14:00", "similar_events_today": 0},
+    "expected_appliance_any": ["space heater", "heater"],
+    "expected_verdict": "check"
+  },
+  {
+    "id": "fridge_compressor",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 150, "duration_s": 300,
+              "local_time": "10:00", "similar_events_today": 5},
+    "expected_appliance_any": ["fridge", "refrigerator", "compressor"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "unknown_250w_night",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 330, "duration_s": 40,
+              "local_time": "03:00", "similar_events_today": 0},
+    "expected_appliance_any": ["unknown", "unclear", "unidentified"],
+    "expected_verdict": "check"
+  },
+  {
+    "id": "three_kw_load",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 3080, "duration_s": 60,
+              "local_time": "18:30", "similar_events_today": 0},
+    "expected_appliance_any": ["heater", "dryer", "oven", "stove", "unknown"],
+    "expected_verdict": "check"
+  },
+  {
+    "id": "tiny_60w_step",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 140, "duration_s": 30,
+              "local_time": "09:15", "similar_events_today": 0},
+    "expected_appliance_any": ["unknown", "light", "lighting", "small", "device"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "kettle_still_running",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 1480, "running_for_s": 95,
+              "still_running": true, "local_time": "07:12", "similar_events_today": 0},
+    "expected_appliance_any": ["kettle"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "space_heater_still_running",
+    "input": {"device": "ww-01/ch1", "baseline_w": 85, "peak_w": 1200, "running_for_s": 2400,
+              "still_running": true, "local_time": "15:00", "similar_events_today": 0},
+    "expected_appliance_any": ["space heater", "heater"],
+    "expected_verdict": "check"
+  },
+  {
+    "id": "named_kettle_kitchen",
+    "input": {"device": "ww-01/ch0", "device_name": "Kettle", "device_kind": "kettle", "room": "kitchen",
+              "baseline_w": 80, "peak_w": 1480, "duration_s": 90, "local_time": "07:12",
+              "similar_events_today": 0},
+    "expected_appliance_any": ["kettle"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "kettle_repeated_today",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 1480, "duration_s": 90,
+              "local_time": "19:00", "similar_events_today": 4},
+    "expected_appliance_any": ["kettle"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "washer",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 500, "duration_s": 1500,
+              "local_time": "09:00", "similar_events_today": 0},
+    "expected_appliance_any": ["washer", "washing machine"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "dryer_named",
+    "input": {"device": "ww-01/ch0", "device_kind": "dryer", "baseline_w": 80, "peak_w": 2900,
+              "duration_s": 2100, "local_time": "11:00", "similar_events_today": 0},
+    "expected_appliance_any": ["dryer"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "small_electronics",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 220, "duration_s": 50,
+              "local_time": "21:00", "similar_events_today": 2},
+    "expected_appliance_any": ["tv", "computer", "electronics", "unknown"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "late_night_unknown_spike",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 900, "duration_s": 70,
+              "local_time": "02:45", "similar_events_today": 0},
+    "expected_appliance_any": ["unknown", "unclear", "unidentified"],
+    "expected_verdict": "check"
+  },
+  {
+    "id": "microwave_repeated",
+    "input": {"device": "ww-01/ch0", "device_kind": "microwave", "baseline_w": 80, "peak_w": 1150,
+              "duration_s": 50, "local_time": "18:10", "similar_events_today": 3},
+    "expected_appliance_any": ["microwave"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "named_hair_dryer_bathroom",
+    "input": {"device": "ww-01/ch0", "device_name": "Hair dryer", "room": "bathroom",
+              "baseline_w": 80, "peak_w": 1550, "duration_s": 200, "local_time": "07:00",
+              "similar_events_today": 0},
+    "expected_appliance_any": ["hair dryer", "hairdryer"],
+    "expected_verdict": "normal"
+  },
+  {
+    "id": "overnight_unknown_still_running",
+    "input": {"device": "ww-01/ch0", "baseline_w": 80, "peak_w": 400, "running_for_s": 10800,
+              "still_running": true, "local_time": "01:00", "similar_events_today": 0},
+    "expected_appliance_any": ["unknown", "unclear", "unidentified"],
+    "expected_verdict": "check"
+  }
+]

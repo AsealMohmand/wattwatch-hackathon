@@ -1,0 +1,134 @@
+@import "tailwindcss";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- design tokens --------------------------------------------------- */
+/* Light values are the fallback (:root); .dark overrides them. Two fixed
+   accents: `trace` = live/now, `copper` = accumulated energy/cost. */
+@theme {
+  --color-bg: #f4f5f3;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ebeae6;
+  --color-border: #dedce2;
+  --color-text: #1b1920;
+  --color-text-muted: #68636f;
+
+  --color-trace: #0e9c7d;
+  --color-copper: #a6672a;
+  --color-info: #2e6fa8;
+  --color-warning: #92650a;
+  --color-critical: #b23a2b;
+
+  --color-info-bg: #2e6fa81a;
+  --color-warning-bg: #92650a1a;
+  --color-critical-bg: #b23a2b1a;
+
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+:root.dark {
+  --color-bg: #17161a;
+  --color-surface: #1e1c21;
+  --color-surface-raised: #262329;
+  --color-border: #322e36;
+  --color-text: #edeaf0;
+  --color-text-muted: #9a94a3;
+
+  --color-trace: #39d9b0;
+  --color-copper: #cc8b3c;
+  --color-info: #5b9bd5;
+  --color-warning: #e3a712;
+  --color-critical: #e0503e;
+
+  --color-info-bg: #5b9bd526;
+  --color-warning-bg: #e3a71226;
+  --color-critical-bg: #e0503e26;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono-nums {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible keyboard focus everywhere, no outline removal anywhere. */
+:focus-visible {
+  outline: 2px solid var(--color-trace);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Live page event ticker: a single arrival cue, not a hover-everywhere
+   default. Neutralized for prefers-reduced-motion by the global rule
+   above (animation-duration: 0.01ms on every element). */
+@keyframes flash-in {
+  from {
+    background-color: var(--color-trace);
+    opacity: 0.4;
+  }
+  to {
+    background-color: transparent;
+    opacity: 1;
+  }
+}
+.flash-in {
+  animation: flash-in 900ms ease-out;
+}
+
+/* F1-8: topology edge flow — dash travels along a drawing edge at a speed
+   set per-edge (proportional to watts) via inline `animation-duration`. */
+@keyframes ww-flow {
+  from {
+    stroke-dashoffset: 12;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
